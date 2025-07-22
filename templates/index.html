@@ -14,7 +14,7 @@
 
     <ul>
     {% for ziply in ziplies %}
-        <li><strong>{{ ziply.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</strong>: {{ ziply.text }}</li>
+        <li><strong>{{ ziply.created_at.strftime("%Y-%m-%d %H:%M") }}</strong> {{ ziply.name }}: {{ ziply.text }}</li>
     {% endfor %}
     </ul>
 </body>
