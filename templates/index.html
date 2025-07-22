@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Item Details</title>
+</head>
+<body>
+    <h1>Ziply for {{ zipcode }} </h1>
+<form action="/submit-ziply" method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="ziply">Ziply:</label><br>
+  <textarea name="ziply" rows="4" cols="50" placeholder="What's on your mind?"></textarea><br>
+  <input type="submit" value="Send Ziply">
+</form>
+
+    <ul>
+    {% for ziply in ziplies %}
+        <li><strong>{{ ziply.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</strong>: {{ ziply.text }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
