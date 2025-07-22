@@ -61,7 +61,8 @@ async def root(request: Request, db: Session = Depends(get_db)):
             "ziplies": []
         })
     
-    ziplies = db.query(Ziplies).order_by(Ziplies.created_at.desc()).all()
+    # Only show ziplies from the user's current zipcode
+    ziplies = db.query(Ziplies).filter(Ziplies.zipcode == zipcode).order_by(Ziplies.created_at.desc()).all()
 
     return templates.TemplateResponse("index.html", {
         "request": request,
