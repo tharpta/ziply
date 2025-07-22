@@ -18,7 +18,7 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-# Database dependency
+# Database
 def get_db():
     db = SessionLocal()
     try:
