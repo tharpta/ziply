@@ -40,6 +40,7 @@ def get_client_ip(request):
         ip = request.client.host
     return ip
 
+
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request, db: Session = Depends(get_db)):
     ip = get_client_ip(request)
@@ -74,8 +75,8 @@ class FormData(BaseModel):
 def submitziply(name: Annotated[str, Form()], ziply: Annotated[str, Form()], request: Request, db: Session = Depends(get_db)):
     # Get client IP and zipcode
     ip = get_client_ip(request)
-    if "127.0.0" in ip or ip == "localhost":
-        ip = "45.48.229.217"
+    # if "127.0.0" in ip or ip == "localhost":
+    #commenting out to obfuscate testing IP and to make sure it works on railway.
     
     # Get zipcode from IP (you might want to cache this)
     import asyncio
