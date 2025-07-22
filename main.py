@@ -54,7 +54,12 @@ async def root(request: Request, db: Session = Depends(get_db)):
 
     zipcode = data.get("postal")
     if zipcode == None:
-        return 500
+        # Return a proper error response instead of raw integer
+        return templates.TemplateResponse("index.html", {
+            "request": request,
+            "zipcode": "Unknown",
+            "ziplies": []
+        })
     
     ziplies = db.query(Ziplies).order_by(Ziplies.created_at.desc()).all()
 
