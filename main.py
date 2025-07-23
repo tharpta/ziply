@@ -98,6 +98,7 @@ def submitziply(name: Annotated[str, Form()], ziply: Annotated[str, Form()], req
     new_ziply = Ziplies(
         text=ziply,
         zipcode=zipcode,
+        name=name,  # Save the creator's name
         device_id=ip  # Using IP as device_id for now
     )
     db.add(new_ziply)
